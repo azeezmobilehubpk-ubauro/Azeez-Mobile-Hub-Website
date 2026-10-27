@@ -117,12 +117,17 @@ function showPlan() {
     result.textContent = 'Meharbani karke cash price likhein.';
     return;
   }
-  const plan = window.AzeezMobileHub.calculatePlan(price, months);
+  const advance = Math.round(price * 0.30);
+const total = Math.round(price * (1 + 0.05 * months));
+const monthly = Math.round((total - advance) / months);
   result.innerHTML =
-    '<b>Cash Price:</b> ' + plan.cashPrice.toLocaleString('en-PK') + ' Rs.<br>' +
-    '<b>30% Advance:</b> ' + plan.advance.toLocaleString('en-PK') + ' Rs.<br>' +
-    '<b>Total Installment Price:</b> ' + plan.totalPrice.toLocaleString('en-PK') + ' Rs.<br>' +
-    '<b>Monthly Qist (taqreeban):</b> ' + plan.monthlyInstallment.toLocaleString('en-PK') + ' Rs.';
+    
+    '<b>Cash Price:</b> ' + price.toLocaleString('en-PK') + ' Rs.<br>' +
+'<b>30% Advance:</b> ' + advance.toLocaleString('en-PK') + ' Rs.<br>' +
+'<b>Total Installment Price:</b> ' + total.toLocaleString('en-PK') + ' Rs.<br>' +
+'<b>Monthly Qist (taqreeban):</b> ' + monthly.toLocaleString('en-PK') + ' Rs.';
+    
+     
 }
 </script>
 
