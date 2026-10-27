@@ -92,5 +92,39 @@
     <p>WhatsApp: 0301-3432510</p>
   </footer>
   <script src="app.js"></script>
+  
+<section style="background:#202020;color:white;padding:20px;margin:20px;border:1px solid #d4af37;border-radius:10px;">
+  <h2 style="color:#d4af37;text-align:center;">Mobile Qist Calculator</h2>
+  <label>Mobile ki Cash Price (Rs.)</label>
+  <input id="cashPrice" type="number" placeholder="Misal: 57000" style="width:100%;padding:12px;box-sizing:border-box;margin:10px 0;">
+  <label>Qist ki Muddat</label>
+  <select id="months" style="width:100%;padding:12px;margin:10px 0;">
+    <option value="3">3 Mahine</option>
+    <option value="6">6 Mahine</option>
+    <option value="9">9 Mahine</option>
+    <option value="12">12 Mahine</option>
+  </select>
+  <button onclick="showPlan()" style="background:#d4af37;padding:12px;width:100%;font-weight:bold;">Qist Calculate Karein</button>
+  <div id="planResult" style="margin-top:15px;line-height:1.8;"></div>
+</section>
+
+<script>
+function showPlan() {
+  const price = Number(document.getElementById('cashPrice').value);
+  const months = Number(document.getElementById('months').value);
+  const result = document.getElementById('planResult');
+  if (!price || price <= 0) {
+    result.textContent = 'Meharbani karke cash price likhein.';
+    return;
+  }
+  const plan = window.AzeezMobileHub.calculatePlan(price, months);
+  result.innerHTML =
+    '<b>Cash Price:</b> ' + plan.cashPrice.toLocaleString('en-PK') + ' Rs.<br>' +
+    '<b>30% Advance:</b> ' + plan.advance.toLocaleString('en-PK') + ' Rs.<br>' +
+    '<b>Total Installment Price:</b> ' + plan.totalPrice.toLocaleString('en-PK') + ' Rs.<br>' +
+    '<b>Monthly Qist (taqreeban):</b> ' + plan.monthlyInstallment.toLocaleString('en-PK') + ' Rs.';
+}
+</script>
+
 </body>
 </html>
