@@ -1,0 +1,33 @@
+
+const WHATSAPP_NUMBER = "923013432510";
+
+function calculatePlan(cashPrice, months) {
+  const price = Number(cashPrice);
+  const advance = Math.round(price * 0.30);
+  const total = Math.round(price * (1 + 0.05 * months));
+  const remaining = total - advance;
+
+  return {
+    cashPrice: price,
+    advance: advance,
+    totalPrice: total,
+    monthlyInstallment: Math.round(remaining / months),
+    months: months
+  };
+}
+
+function formatRupees(amount) {
+  return "Rs. " + Number(amount).toLocaleString("en-PK");
+}
+
+function askOnWhatsApp(message) {
+  const url = "https://wa.me/" + WHATSAPP_NUMBER +
+    "?text=" + encodeURIComponent(message);
+  window.open(url, "_blank");
+}
+
+window.AzeezMobileHub = {
+  calculatePlan,
+  formatRupees,
+  askOnWhatsApp
+};
