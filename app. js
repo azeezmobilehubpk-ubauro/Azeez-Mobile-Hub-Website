@@ -32,3 +32,24 @@ window.AzeezMobileHub = {
   formatRupees,
   askOnWhatsApp
 };
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+document.getElementById("admin-login-button")?.addEventListener("click", async () => {
+  const email = document.getElementById("admin-email").value.trim();
+  const password = document.getElementById("admin-password").value;
+  const message = document.getElementById("admin-message");
+
+  message.textContent = "Login ho raha hai...";
+
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error) {
+    message.textContent = "Login nahi hua: " + error.message;
+    return;
+  }
+
+  message.textContent = "Admin login kamyab!";
+});
