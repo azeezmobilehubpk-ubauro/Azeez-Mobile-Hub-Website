@@ -1,6 +1,7 @@
-
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 const WHATSAPP_NUMBER = "923013432510";
-
+const SUPABASE_URL = "https://zfkmoxvqsrhjxclnjfxd.supabase.co";
+const SUPABASE_KEY = "sb_publishable_aSezAXWvUdiFsGORq5mlvQ_ftr8ftQf";
 function calculatePlan(cashPrice, months) {
   const price = Number(cashPrice);
   const advance = Math.round(price * 0.30);
