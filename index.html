@@ -2,141 +2,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Azeez Mobile Hub</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #101010;
-      color: white;
-    }
-    header {
-      background: #000;
-      color: #d4af37;
-      text-align: center;
-      padding: 25px 12px;
-      border-bottom: 2px solid #d4af37;
-    }
-    h1 { margin: 0 0 10px; }
-    .hero {
-      text-align: center;
-      padding: 35px 18px;
-    }
-    .hero h2 { color: #d4af37; }
-    .btn {
-      display: inline-block;
-      background: #d4af37;
-      color: #111;
-      padding: 12px 18px;
-      margin: 8px 4px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .plans {
-      padding: 20px;
-      text-align: center;
-    }
-    .card {
-      background: #202020;
-      border: 1px solid #d4af37;
-      border-radius: 10px;
-      padding: 15px;
-      margin: 12px auto;
-      max-width: 350px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #d4af37;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azeez Mobile Hub</title>
+<style>
+body{margin:0;background:#101010;color:#fff;font-family:Arial,sans-serif}
+header{text-align:center;padding:24px 12px;background:#000;border-bottom:2px solid #d4af37}
+h1,h2{color:#d4af37}
+section{margin:18px auto;padding:18px;max-width:600px}
+.panel{background:#1c1c1c;border:1px solid #d4af37;border-radius:12px}
+input,select,button{box-sizing:border-box;width:100%;padding:14px;margin:8px 0;border-radius:7px;font-size:16px}
+input,select{background:#fff;color:#111;border:1px solid #aaa;pointer-events:auto}
+button{background:#d4af37;color:#111;font-weight:bold;border:0;cursor:pointer}
+.result{line-height:1.9;overflow-wrap:anywhere}
+a{color:#d4af37}
+</style>
 </head>
 <body>
-  <header>
-    <h1>AZEEZ MOBILE HUB</h1>
-    <p>New & Used Mobiles | Cash & Easy Installments</p>
-  </header>
+<header>
+<h1>AZEEZ MOBILE HUB</h1>
+<p>Asaan Mahana Qiston Par Mobile</p>
+</header>
 
-  <section class="hero">
-    <h2>Apna Pasandeeda Mobile Qiston Par Lein!</h2>
-    <p>Asaan Mahana Qist Plans — 3, 6, 9 aur 12 Mahine</p>
-    <a class="btn" href="#plans">Qist Plans Dekhein</a>
-    <a class="btn" href="https://wa.me/923013432510">WhatsApp Karein</a>
-  </section>
+<section class="panel">
+<h2>Installment Calculator</h2>
+<label for="cashPrice">Mobile Cash Price (Rs.)</label>
+<input id="cashPrice" type="number" min="1" step="1" placeholder="Misal: 50000">
 
-  <section class="plans" id="plans">
-    <h2 style="color:#d4af37;">Hamare Qist Plans</h2>
-    <div class="card">
-      <h3>3 Mahine</h3>
-      <p>Mobile ki qeemat aur qist maloom karne ke liye rabta karein.</p>
-    </div>
-    <div class="card">
-      <h3>6 Mahine</h3>
-      <p>Mobile ki qeemat aur qist maloom karne ke liye rabta karein.</p>
-    </div>
-    <div class="card">
-      <h3>9 Mahine</h3>
-      <p>Mobile ki qeemat aur qist maloom karne ke liye rabta karein.</p>
-    </div>
-    <div class="card">
-      <h3>12 Mahine</h3>
-      <p>Mobile ki qeemat aur qist maloom karne ke liye rabta karein.</p>
-    </div>
-  </section>
+<label for="months">Qiston ki Muddat</label>
+<select id="months">
+<option value="3">3 Mahine</option>
+<option value="6" selected>6 Mahine</option>
+<option value="9">9 Mahine</option>
+<option value="12">12 Mahine</option>
+</select>
 
-  <footer>
-    <p>AZEEZ MOBILE HUB</p>
-    <p>WhatsApp: 0301-3432510</p>
-  </footer>
-  <script type="module" src="app.js"></script>
-  
-<section style="background:#202020;color:white;padding:20px;margin:20px;border:1px solid #d4af37;border-radius:10px;">
-  <h2 style="color:#d4af37;text-align:center;">Mobile Qist Calculator</h2>
-  <label>Mobile ki Cash Price (Rs.)</label>
-  <input id="cashPrice" type="number" placeholder="Misal: 57000" style="width:100%;padding:12px;box-sizing:border-box;margin:10px 0;">
-  <label>Qist ki Muddat</label>
-  <select id="months" style="width:100%;padding:12px;margin:10px 0;">
-    <option value="3">3 Mahine</option>
-    <option value="6">6 Mahine</option>
-    <option value="9">9 Mahine</option>
-    <option value="12">12 Mahine</option>
-  </select>
-  <button onclick="showPlan()" style="background:#d4af37;padding:12px;width:100%;font-weight:bold;">Qist Calculate Karein</button>
-  <div id="planResult" style="margin-top:15px;line-height:1.8;"></div>
+<button id="calculateButton" type="button">Qist Calculate Karein</button>
+<div id="result" class="result" aria-live="polite"></div>
+</section>
+
+<section class="panel">
+<h2>WhatsApp Par Rabta Karein</h2>
+<p>Mobile ki qiston aur availability ke liye hum se rabta karein.</p>
+<button id="whatsappButton" type="button">WhatsApp Karein</button>
+</section>
+
+<section class="panel">
+<h2>Admin Login</h2>
+<label for="admin-email">Admin Email</label>
+<input id="admin-email" type="email" autocomplete="username" placeholder="Apni email likhein">
+
+<label for="admin-password">Password</label>
+<input id="admin-password" type="password" autocomplete="current-password" placeholder="Password likhein">
+
+<button id="admin-login-button" type="button">Login</button>
+<p id="admin-message" aria-live="polite"></p>
 </section>
 
 <script>
-function showPlan() {
-  const price = Number(document.getElementById('cashPrice').value);
-  const months = Number(document.getElementById('months').value);
-  const result = document.getElementById('planResult');
-  if (!price || price <= 0) {
-    result.textContent = 'Meharbani karke cash price likhein.';
+document.getElementById("calculateButton").addEventListener("click", function(){
+  const price = Number(document.getElementById("cashPrice").value);
+  const months = Number(document.getElementById("months").value);
+  const result = document.getElementById("result");
+
+  if (!Number.isFinite(price) || price <= 0) {
+    result.textContent = "Meherbani karke sahi cash price likhein.";
     return;
   }
+
   const advance = Math.round(price * 0.30);
-const total = Math.round(price * (1 + 0.05 * months));
-const monthly = Math.round((total - advance) / months);
+  const total = Math.round(price * (1 + 0.05 * months));
+  const remaining = total - advance;
+  const monthly = Math.round(remaining / months);
+
   result.innerHTML =
-    
-    '<b>Cash Price:</b> ' + price.toLocaleString('en-PK') + ' Rs.<br>' +
-'<b>30% Advance:</b> ' + advance.toLocaleString('en-PK') + ' Rs.<br>' +
-'<b>Total Installment Price:</b> ' + total.toLocaleString('en-PK') + ' Rs.<br>' +
-'<b>Monthly Qist (taqreeban):</b> ' + monthly.toLocaleString('en-PK') + ' Rs.';
-    
- }    
-</script>}
-<div style="position:relative;z-index:9999;pointer-events:auto">
-<section id="admin-login" style="background:#111;color:#d4af37;padding:20px;margin:20px;border-radius:12px">
-  <h2>Admin Login — Azeez Mobile Hub</h2>
-<input id="admin-email" type="email" placeholder="Admin Email" autocomplete="username" style="display:block;padding:12px;margin:10px 0;width:90%;box-sizing:border-box;position:relative;z-index:10;pointer-events:auto">
-<input id="admin-password" type="password" placeholder="Password" autocomplete="current-password" style="display:block;padding:12px;margin:10px 0;width:90%;box-sizing:border-box;position:relative;z-index:10;pointer-events:auto">
-  <button id="admin-login-button" style="padding:12px;background:#d4af37;color:#111">Login</button>
-  <p id="admin-message"></p>
-</section>
-</div>
+    "<b>Cash Price:</b> Rs. " + price.toLocaleString("en-PK") + "<br>" +
+    "<b>30% Advance:</b> Rs. " + advance.toLocaleString("en-PK") + "<br>" +
+    "<b>Total Installment Price:</b> Rs. " + total.toLocaleString("en-PK") + "<br>" +
+    "<b>Monthly Qist (taqreeban):</b> Rs. " + monthly.toLocaleString("en-PK") +
+    "<br><small>Aakhri qist mein rounding ka farq ho sakta hai.</small>";
+});
+
+document.getElementById("whatsappButton").addEventListener("click", function(){
+  window.open("https://wa.me/923013432510", "_blank");
+});
+</script>
+
+<script type="module" src="app.js"></script>
 </body>
 </html>
